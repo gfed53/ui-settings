@@ -1,7 +1,16 @@
 .knob
+	transition: 200ms ease-in-out all
 	margin: 13px
 	border-radius: 2em
 	width: 40px
 	height: 40px
 	box-shadow: 0 1px 1px 1px black
-	background: radial-gradient(lightgrey, white)
+	background: radial-gradient(#e2e2e2, lightgrey, #fbfbfb)
+	background-size: 400% 400%
+	background-position: 300% 50%
+	//test
+	&:hover
+		background-position: 0% 50%
+
+// .activated
+// 	background: radial-gradient(#e2e2e2, lightgrey, #fbfbfb)
