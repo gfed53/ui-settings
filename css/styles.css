@@ -33,5 +33,6 @@
   background: radial-gradient(#e2e2e2, lightgrey, #fbfbfb);
   background-size: 50% 350%;
   background-position: 0% 0%; }
-  .knob:hover {
-    background-size: 350% 50%; }
+
+.activated {
+  background-size: 350% 50%; }
