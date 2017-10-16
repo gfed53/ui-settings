@@ -21,10 +21,14 @@
       -ms-flex-flow: row wrap;
           flex-flow: row wrap; }
 
+.knob-container {
+  width: 100px;
+  text-align: center; }
+
 .knob {
   -webkit-transition: 200ms ease-in-out all;
   transition: 200ms ease-in-out all;
-  margin: 13px;
+  margin: 13px auto;
   border-radius: 2em;
   width: 40px;
   height: 40px;
