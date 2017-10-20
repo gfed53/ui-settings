@@ -39,4 +39,5 @@
   background-position: 0% 0%; }
 
 .activated {
-  background-size: 350% 50%; }
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }

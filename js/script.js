@@ -1,67 +1,93 @@
 //jshint esversion: 6
 
 $(function(){
-	let int001;
-	let count001 = 0;
-	let int002;
-	let int003;
 
-	let pizzaz = ['Zilch', '2', '3', '4', '5'];
-	let mojo = ['Nada', '2', '3', '4', '5'];
-	let spice = ['Mild', '2', '3', '4', '5'];
+	let pizzaz = {
+		class: '.knob-container-1',
+		choices: ['2', '3', '4', '5'],
+		int: null,
+		count: 0
+	};
+	let mojo = {
+		class: '.knob-container-2',
+		choices: ['2', '3', '4', '5'],
+		int: null,
+		count: 0
+	};
+	let spice = { 
+		class: '.knob-container-3',
+		choices: ['2', '3', '4', '5'],
+		int: null,
+		count: 0
+	};
 
+	//For all knobs, class change
 	$('.knob-container').mousedown('.knob', function(e){
 		e.preventDefault();
 		$(this).children('.knob').addClass('activated');
-		
-		
-		// int001 = setInterval(() => {
-		// 	console.log('int001',int001);
-		// 	count++;
-		// 	console.log('count',count);
-		// }, 1000);
-		// console.log('int001',int001);
 	}).mouseup(function(e){
 		e.preventDefault();
 		$(this).children('.knob').removeClass('activated');
-		// clearInterval(int001);
 	}).mouseleave(function(e){
 		e.preventDefault();
 		$(this).children('.knob').removeClass('activated');
-		// clearInterval(int001);
 	});
 
+	function activate(knob){
+		$(knob.class).mousedown('.knob', function(e){
+			console.log('clickdown');
+				
+			knob.int = setInterval(() => {
+				console.log('knob.int',knob.int);
+				// count001++;
+				if(knob.count < knob.choices.length){
+					$(this).children('.setting').html(knob.choices[knob.count++]);
+				}
+				
+			}, 1000);
 
-	$('.knob-container-1').mousedown('.knob', function(e){
+		}).mouseup(function(e){
+			clearInterval(knob.int);
+		}).mouseleave(function(e){
+			clearInterval(knob.int);
+		});
+	}
+
+	activate(pizzaz);
+	activate(mojo);
+	activate(spice);
+
+
+	// $('.knob-container-1').mousedown('.knob', function(e){
 		
-		int001 = setInterval(() => {
-			console.log('int001',int001);
-			// count001++;
-			if(count001 < pizzaz.length){
-				$(this).children('.setting').html(pizzaz[count001++]);
-			}
+	// 	int001 = setInterval(() => {
+	// 		console.log('int001',int001);
+	// 		// count001++;
+	// 		if(count001 < pizzaz.length){
+	// 			$(this).children('.setting').html(pizzaz[count001++]);
+	// 		}
 			
-		}, 1000);
+	// 	}, 1000);
 
-	}).mouseup(function(e){
-		clearInterval(int001);
-	}).mouseleave(function(e){
-		clearInterval(int001);
-	});
+	// }).mouseup(function(e){
+	// 	clearInterval(int001);
+	// }).mouseleave(function(e){
+	// 	clearInterval(int001);
+	// });
 
-	$('.knob-container-2').mousedown('.knob', function(e){
+	// $('.knob-container-2').mousedown('.knob', function(e){
 
-	}).mouseup(function(e){
+	// }).mouseup(function(e){
 
-	}).mouseleave(function(e){
+	// }).mouseleave(function(e){
 
-	});
+	// });
 
-	$('.knob-container-3').mousedown('.knob', function(e){
+	// $('.knob-container-3').mousedown('.knob', function(e){
 
-	}).mouseup(function(e){
+	// }).mouseup(function(e){
 
-	}).mouseleave(function(e){
+	// }).mouseleave(function(e){
 
-	});
+	// });
 });
