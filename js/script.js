@@ -41,7 +41,36 @@ $(function(){
 				console.log('knob.int',knob.int);
 				// count001++;
 				if(knob.count < knob.choices.length){
-					$(this).children('.setting').html(knob.choices[knob.count++]);
+					let $element = 
+					$(this)
+					.children('.setting')
+					.children('span');
+
+
+					$element.addClass('leave');
+
+					setTimeout(() =>{
+						$element
+						.html(knob.choices[knob.count++]);
+					}, 100);
+
+					setTimeout(() =>{
+						$element
+						// .addClass('hidden')
+						.removeClass('leave')
+						.addClass('enter');
+					}, 200);
+
+					setTimeout(() =>{
+						$element
+						// .removeClass('hidden')
+						.removeClass('enter');
+					}, 300);
+
+
+					
+					// .delay(50)
+					// .slideDown();
 				}
 				
 			}, 1000);
@@ -53,9 +82,32 @@ $(function(){
 		});
 	}
 
+	function test(){
+		let $element = $('.knob-container-1 .setting span');
+
+		$element.addClass('leave');
+
+		setTimeout(()=>{
+
+		}, 100);
+	}
+
+	function sequence(){
+		let $element = $('.knob-container-1 .setting span');
+		$element.slideUp()
+		.delay(300)
+		.slideDown();
+		// .removeClass('leave');
+		// .addClass('enter')
+		// .removeClass('enter');
+	}
+
 	activate(pizzaz);
 	activate(mojo);
 	activate(spice);
+
+	$('.test-btn').on('click', test);
+	// test();
 
 
 	// $('.knob-container-1').mousedown('.knob', function(e){

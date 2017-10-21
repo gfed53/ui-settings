@@ -41,3 +41,23 @@
 .activated {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg); }
+
+.setting {
+  overflow: hidden; }
+  .setting span {
+    display: inline-block;
+    -webkit-transition: 100ms linear all;
+    transition: 100ms linear all; }
+
+.enter {
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
+  opacity: 0; }
+
+.hidden {
+  opacity: 0; }
+
+.leave {
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  opacity: 0; }

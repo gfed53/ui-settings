@@ -22,3 +22,20 @@
 .activated
 	// background-size: 350% 50%
 	transform: rotate(180deg)
+
+.setting
+	overflow: hidden
+	span
+		display: inline-block
+		transition: 100ms linear all
+
+.enter
+	transform: translateX(200px)
+	opacity: 0
+
+.hidden
+	opacity: 0
+
+.leave
+	transform: translateX(-200px)
+	opacity: 0
