@@ -21,6 +21,8 @@ $(function(){
 		count: 0
 	};
 
+	let currentTimeout = null;
+
 	//For all knobs, class change
 	$('.knob-container').mousedown('.knob', function(e){
 		e.preventDefault();
@@ -82,6 +84,45 @@ $(function(){
 		});
 	}
 
+	function activateDecel(knob){
+		$(knob.class).mousedown('.knob', function(e){
+			setAcceleratingTimeout(function(){ animateKnob(knob); }, 2000, knob.choices.length);
+		}).mouseup(function(e){
+			
+		}).mouseleave(function(e){
+			//do nothing
+		});
+	}
+
+	//Actual animation and html change for knob
+	function animateKnob(knob){
+		let $element = 
+		$(knob.class)
+		.children('.setting')
+		.children('span');
+
+
+		$element.addClass('leave');
+
+		setTimeout(() =>{
+			$element
+			.html(knob.choices[knob.count++]);
+		}, 100);
+
+		setTimeout(() =>{
+			$element
+			// .addClass('hidden')
+			.removeClass('leave')
+			.addClass('enter');
+		}, 200);
+
+		setTimeout(() =>{
+			$element
+			// .removeClass('hidden')
+			.removeClass('enter');
+		}, 300);
+	}
+
 	function test(){
 		let $element = $('.knob-container-1 .setting span');
 
@@ -102,44 +143,55 @@ $(function(){
 		// .removeClass('enter');
 	}
 
-	activate(pizzaz);
+	// activate(pizzaz);
+	activateDecel(pizzaz);
 	activate(mojo);
 	activate(spice);
 
 	$('.test-btn').on('click', test);
 	// test();
 
+	//Do the reverse
+	function setDeceleratingTimeout(callback, factor, times)
+	{
+		console.log('times',times);
+	    var internalCallback = function(tick, counter) {
+	    	console.log('tick',tick);
+	    	console.log('counter',counter);
+	    	console.log('factor',factor);
+	        return function() {
+	            if (--tick >= 0) {
+	                window.setTimeout(internalCallback, ++counter * factor);
+	                callback();
+	            }
+	        };
+	    }(times, 0);
 
-	// $('.knob-container-1').mousedown('.knob', function(e){
-		
-	// 	int001 = setInterval(() => {
-	// 		console.log('int001',int001);
-	// 		// count001++;
-	// 		if(count001 < pizzaz.length){
-	// 			$(this).children('.setting').html(pizzaz[count001++]);
-	// 		}
-			
-	// 	}, 1000);
+	    window.setTimeout(internalCallback, factor);
+	}
 
-	// }).mouseup(function(e){
-	// 	clearInterval(int001);
-	// }).mouseleave(function(e){
-	// 	clearInterval(int001);
-	// });
+	function setAcceleratingTimeout(callback, factor, times)
+	{
+		console.log('times',times);
+	    var internalCallback = function(tick, counter) {
+	    	console.log('tick',tick);
+	    	console.log('counter',counter);
+	    	console.log('factor',factor);
+	        return function() {
+	            if (--tick >= 0) {
+	            	//we can either use x/++counter, instead of just counter
+	            	//or better, can also invert tick and counter
+	                window.setTimeout(internalCallback, (--counter/5) * factor);
+	                callback();
+	            }
+	        };
+	    }(times, times);
 
-	// $('.knob-container-2').mousedown('.knob', function(e){
+	    window.setTimeout(internalCallback, factor);
+	}
 
-	// }).mouseup(function(e){
-
-	// }).mouseleave(function(e){
-
-	// });
-
-	// $('.knob-container-3').mousedown('.knob', function(e){
-
-	// }).mouseup(function(e){
-
-	// }).mouseleave(function(e){
-
-	// });
+	// console.log() requires firebug    
+	// setDeceleratingTimeout(function(){ console.log('hi'); }, 10, 10);
+	// setDeceleratingTimeout(function(){ console.log('bye'); }, 1000, 10);
+	
 });
