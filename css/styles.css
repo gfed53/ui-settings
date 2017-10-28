@@ -10,7 +10,7 @@
           box-sizing: inherit; }
 
 .page-container {
-  margin-top: 10em; }
+  margin-top: 7em; }
 
 .settings-container {
   display: -webkit-box;
@@ -19,7 +19,25 @@
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
-          flex-flow: row wrap; }
+          flex-flow: row wrap;
+  width: 500px;
+  margin: 0 auto;
+  padding: 2em 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.knob-container p {
+  line-height: 2.4em;
+  font-size: 2em; }
+
+.knob-container-1 p {
+  font-family: 'Indie Flower', cursive; }
+
+.knob-container-2 p {
+  font-family: 'Lobster', cursive; }
+
+.knob-container-3 p {
+  font-family: 'Pacifico', cursive; }
 
 .knob-container {
   width: 100px;

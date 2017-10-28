@@ -145,8 +145,8 @@ $(function(){
 
 	// activate(pizzaz);
 	activateDecel(pizzaz);
-	activate(mojo);
-	activate(spice);
+	activateDecel(mojo);
+	activateDecel(spice);
 
 	$('.test-btn').on('click', test);
 	// test();
