@@ -20,15 +20,21 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  width: 500px;
+  width: 900px;
   margin: 0 auto;
+  border-radius: 2em;
+  -webkit-box-shadow: 1px 2px 2px grey;
+          box-shadow: 1px 2px 2px grey;
   padding: 2em 0;
   -ms-flex-pack: distribute;
-      justify-content: space-around; }
+      justify-content: space-around;
+  background: -webkit-gradient(linear, left top, left bottom, from(#336E7B), color-stop(115%, #464646));
+  background: linear-gradient(#336E7B, #464646 115%); }
 
 .knob-container p {
   line-height: 2.4em;
-  font-size: 2em; }
+  font-size: 2em;
+  color: #fff; }
 
 .knob-container-1 p {
   font-family: 'Indie Flower', cursive; }
@@ -40,7 +46,7 @@
   font-family: 'Pacifico', cursive; }
 
 .knob-container {
-  width: 100px;
+  width: 300px;
   text-align: center; }
 
 .knob {

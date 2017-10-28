@@ -4,19 +4,19 @@ $(function(){
 
 	let pizzaz = {
 		class: '.knob-container-1',
-		choices: ['2', '3', '4', '5'],
+		choices: ['Sump\'n', 'Semi-Worthy', 'Flashy', 'Bob Saget!'],
 		int: null,
 		count: 0
 	};
 	let mojo = {
 		class: '.knob-container-2',
-		choices: ['2', '3', '4', '5'],
+		choices: ['10%', '50%', '99%', 'Ya Baabayyyyy ;)'],
 		int: null,
 		count: 0
 	};
 	let spice = { 
 		class: '.knob-container-3',
-		choices: ['2', '3', '4', '5'],
+		choices: ['Tangy', 'Hot', 'Red Hot', 'Guy Fierri :O',':O :O',':O :O :O',':O :O :O :O',':O :O :O :O :O'],
 		int: null,
 		count: 0
 	};
@@ -58,21 +58,14 @@ $(function(){
 
 					setTimeout(() =>{
 						$element
-						// .addClass('hidden')
 						.removeClass('leave')
 						.addClass('enter');
 					}, 200);
 
 					setTimeout(() =>{
 						$element
-						// .removeClass('hidden')
 						.removeClass('enter');
 					}, 300);
-
-
-					
-					// .delay(50)
-					// .slideDown();
 				}
 				
 			}, 1000);
@@ -88,9 +81,9 @@ $(function(){
 		$(knob.class).mousedown('.knob', function(e){
 			setAcceleratingTimeout(function(){ animateKnob(knob); }, 2000, knob.choices.length);
 		}).mouseup(function(e){
-			
+			clearTimeout(currentTimeout);
 		}).mouseleave(function(e){
-			//do nothing
+			clearTimeout(currentTimeout);
 		});
 	}
 
@@ -181,13 +174,13 @@ $(function(){
 	            if (--tick >= 0) {
 	            	//we can either use x/++counter, instead of just counter
 	            	//or better, can also invert tick and counter
-	                window.setTimeout(internalCallback, (--counter/5) * factor);
+	                currentTimeout = window.setTimeout(internalCallback, (--counter/5) * factor);
 	                callback();
 	            }
 	        };
 	    }(times, times);
 
-	    window.setTimeout(internalCallback, factor);
+	   currentTimeout = window.setTimeout(internalCallback, factor);
 	}
 
 	// console.log() requires firebug    
