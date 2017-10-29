@@ -16,7 +16,7 @@ $(function(){
 	};
 	let spice = { 
 		class: '.knob-container-3',
-		choices: ['Tangy', 'Hot', 'Red Hot', 'Guy Fierri :O',':O :O',':O :O :O',':O :O :O :O',':O :O :O :O :O'],
+		choices: ['Tangy', 'Hot', 'Red Hot', 'Guy Fierri :O'],
 		int: null,
 		count: 0
 	};
@@ -77,9 +77,11 @@ $(function(){
 		});
 	}
 
-	function activateDecel(knob){
+	function activateAccel(knob){
+
 		$(knob.class).mousedown('.knob', function(e){
-			setAcceleratingTimeout(function(){ animateKnob(knob); }, 2000, knob.choices.length);
+			console.log(knob,'count: ',knob.count);
+			setAcceleratingTimeout(function(){ animateKnob(knob); }, 2000, (knob.choices.length - knob.count));
 		}).mouseup(function(e){
 			clearTimeout(currentTimeout);
 		}).mouseleave(function(e){
@@ -137,9 +139,9 @@ $(function(){
 	}
 
 	// activate(pizzaz);
-	activateDecel(pizzaz);
-	activateDecel(mojo);
-	activateDecel(spice);
+	activateAccel(pizzaz);
+	activateAccel(mojo);
+	activateAccel(spice);
 
 	$('.test-btn').on('click', test);
 	// test();
@@ -149,9 +151,9 @@ $(function(){
 	{
 		console.log('times',times);
 	    var internalCallback = function(tick, counter) {
-	    	console.log('tick',tick);
-	    	console.log('counter',counter);
-	    	console.log('factor',factor);
+	    	// console.log('tick',tick);
+	    	// console.log('counter',counter);
+	    	// console.log('factor',factor);
 	        return function() {
 	            if (--tick >= 0) {
 	                window.setTimeout(internalCallback, ++counter * factor);
@@ -165,11 +167,11 @@ $(function(){
 
 	function setAcceleratingTimeout(callback, factor, times)
 	{
-		console.log('times',times);
+		// console.log('times',times);
 	    var internalCallback = function(tick, counter) {
-	    	console.log('tick',tick);
-	    	console.log('counter',counter);
-	    	console.log('factor',factor);
+	    	// console.log('tick',tick);
+	    	// console.log('counter',counter);
+	    	// console.log('factor',factor);
 	        return function() {
 	            if (--tick >= 0) {
 	            	//we can either use x/++counter, instead of just counter
