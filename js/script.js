@@ -37,11 +37,8 @@ $(function(){
 
 	function activate(knob){
 		$(knob.class).mousedown('.knob', function(e){
-			console.log('clickdown');
 				
 			knob.int = setInterval(() => {
-				console.log('knob.int',knob.int);
-				// count001++;
 				if(knob.count < knob.choices.length){
 					let $element = 
 					$(this)
@@ -106,14 +103,12 @@ $(function(){
 
 		setTimeout(() =>{
 			$element
-			// .addClass('hidden')
 			.removeClass('leave')
 			.addClass('enter');
 		}, 200);
 
 		setTimeout(() =>{
 			$element
-			// .removeClass('hidden')
 			.removeClass('enter');
 		}, 300);
 	}
@@ -133,27 +128,18 @@ $(function(){
 		$element.slideUp()
 		.delay(300)
 		.slideDown();
-		// .removeClass('leave');
-		// .addClass('enter')
-		// .removeClass('enter');
 	}
-
-	// activate(pizzaz);
 	activateAccel(pizzaz);
 	activateAccel(mojo);
 	activateAccel(spice);
 
 	$('.test-btn').on('click', test);
-	// test();
 
 	//Do the reverse
 	function setDeceleratingTimeout(callback, factor, times)
 	{
 		console.log('times',times);
 	    var internalCallback = function(tick, counter) {
-	    	// console.log('tick',tick);
-	    	// console.log('counter',counter);
-	    	// console.log('factor',factor);
 	        return function() {
 	            if (--tick >= 0) {
 	                window.setTimeout(internalCallback, ++counter * factor);
@@ -167,11 +153,7 @@ $(function(){
 
 	function setAcceleratingTimeout(callback, factor, times)
 	{
-		// console.log('times',times);
 	    var internalCallback = function(tick, counter) {
-	    	// console.log('tick',tick);
-	    	// console.log('counter',counter);
-	    	// console.log('factor',factor);
 	        return function() {
 	            if (--tick >= 0) {
 	            	//we can either use x/++counter, instead of just counter
@@ -184,9 +166,4 @@ $(function(){
 
 	   currentTimeout = window.setTimeout(internalCallback, factor);
 	}
-
-	// console.log() requires firebug    
-	// setDeceleratingTimeout(function(){ console.log('hi'); }, 10, 10);
-	// setDeceleratingTimeout(function(){ console.log('bye'); }, 1000, 10);
-	
 });

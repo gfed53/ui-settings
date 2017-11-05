@@ -31,9 +31,12 @@
   background: -webkit-gradient(linear, left top, left bottom, from(#336E7B), color-stop(115%, #464646));
   background: linear-gradient(#336E7B, #464646 115%); }
 
+.knob-container .knob-header {
+  font-size: 2em; }
+
 .knob-container p {
   line-height: 2.4em;
-  font-size: 2em;
+  font-size: 1.3em;
   color: #fff; }
 
 .knob-container-1 p {
@@ -50,8 +53,8 @@
   text-align: center; }
 
 .knob {
-  -webkit-transition: 200ms ease-in-out all;
-  transition: 200ms ease-in-out all;
+  -webkit-transition: 2500ms ease-in-out all;
+  transition: 2500ms ease-in-out all;
   margin: 13px auto;
   border-radius: 2em;
   width: 40px;
@@ -63,8 +66,8 @@
   background-position: 0% 0%; }
 
 .activated {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg); }
+  -webkit-transform: rotate(340deg);
+          transform: rotate(340deg); }
 
 .setting {
   overflow: hidden; }
